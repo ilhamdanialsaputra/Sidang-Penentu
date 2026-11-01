@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sidang Penentu</title>
+<style>
+:root{--bg:#f6f1e7;--card:#fff;--tx:#2b2418;--mu:#6b604d;--ac:#8b2e2e;--bd:#ddd2bb;--ok:#2f6b3f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1c1812;--card:#2a251c;--tx:#f1e9d6;--mu:#b5a98f;--ac:#e07a6a;--bd:#4a4234;--ok:#7fc48f}}
+html{color-scheme:light dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 Georgia,serif}
+main{max-width:860px;margin:0 auto;padding:16px}
+h1,h2,h3{line-height:1.2}h1{color:var(--ac);margin:.2em 0}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin:12px 0}
+.mu{color:var(--mu);font-size:.9em}
+button{font:inherit;background:var(--ac);color:#fff;border:0;border-radius:8px;padding:10px 16px;cursor:pointer}
+button.alt{background:transparent;color:var(--ac);border:1px solid var(--ac)}
+.opt{border:1px solid var(--bd);border-radius:10px;padding:10px;margin:8px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.g{border:1px solid var(--bd);border-radius:8px;padding:8px;font-size:.9em}
+select{font:inherit;width:100%;margin-top:4px;padding:6px;background:var(--bg);color:var(--tx);border:1px solid var(--bd);border-radius:6px}
+.tag{display:inline-block;padding:2px 8px;border-radius:99px;background:var(--ac);color:#fff;font-size:.8em}
+.tm{font-size:2.2em;font-variant-numeric:tabular-nums;color:var(--ac)}
+.ok{color:var(--ok)}
+.sc{overflow-x:auto}
+</style></head><body><main id="app"></main>
+<script>
+var T=[["Wahid Hasjim","A"],["Oto Iskandardinata","A"],["Yap Tjwan Bing","A"],["I Gusti Ktut Pudja","A"],["Wiranatakusuma","A"],["Radjiman","A"],["Ki Hadjar Dewantara","A"],["Kasman","A"],["Supomo","B"],["Ki Bagus Hadikusumo","B"],["Subardjo","B"],["Ratulangi","B"],["Iwa Kusumasumantri","B"],["Latuharhary","B"],["Dr Amir","B"],["Sajuti","B"]];
+var R=[
+{n:"Ronde 1",ag:"Pembukaan UUD, syarat agama Presiden (Pasal 6 ayat 1), dan Pasal 29 ayat 1",tim:"A",
+sit:"18 Agustus 1945, sehari setelah proklamasi. Ketua meminta sidang bergerak cepat dan hanya membahas perubahan penting. Ada usul mengubah rumusan agama pada Pembukaan, Pasal 6 ayat 1, dan Pasal 29 ayat 1 agar UUD diterima seluruh daerah. Tentukan sikap kelompokmu.",
+o:[["kanon","Terima rumusan Wakil Ketua: Ketuhanan Yang Maha Esa tanpa kalimat tambahan, syarat agama Presiden dihapus. Kelompokmu melepas sebagian rumusan yang diperjuangkan.","Rumusan baru diterima. Persatuan terjaga dan sidang lanjut, tetapi sebagian tokoh merasa kehilangan."],
+["memaksa","Tolak rumusan baru, pertahankan rumusan lama pada ketiga pasal tanpa perundingan lagi.","Sidang terbelah. Waktu terpakai untuk berdebat tiga pasal."],
+["menunda","Setujui Pembukaan, tetapi Pasal 6 ayat 1 dan 29 ayat 1 dibahas belakangan setelah pemerintahan terbentuk.","Sidang lanjut, tetapi dua pasal jadi urusan terbuka dan sebagian tokoh ragu pada kesungguhan sidang."]],
+v:"",
+c:"Sidang dibuka pukul 11.30 dengan 27 anggota (hlm. 333). Hatta menyampaikan perubahan pada Pembukaan, Pasal 6 ayat 1 (kata yang beragama Islam dicoret), dan Pasal 29 ayat 1 (kalimat dengan kewajiban dst dicoret), dengan alasan UUD dapat diterima daerah non-Islam (hlm. 335-336). Pembicaraan di luar sidang: belum diketahui."},
+{n:"Ronde 2",ag:"Pasal 37: syarat perubahan UUD",tim:"B",
+sit:"Sidang tiba di pasal penutup. Ada usul tentang cara mengubah UUD kelak, dan anggota menimbang seberapa sulit UUD boleh diubah.",
+o:[["kanon","Wajib dua pertiga anggota MPR hadir, putusan dengan persetujuan sedikitnya dua pertiga yang hadir.","UUD sulit diubah tanpa dukungan luas. Kepercayaan pada UUD baru menguat, tokoh yang ingin cepat berubah merasa terhambat."],
+["memaksa","Perubahan UUD cukup dengan suara terbanyak, tolak membahas syarat lain.","Perubahan jadi mudah, tetapi tokoh yang ingin UUD dijaga menolak dan sidang terpecah."],
+["menunda","Jangan atur syarat perubahan sekarang, serahkan ke MPR kelak.","Sidang cepat lewat, tetapi UUD berlaku tanpa aturan perubahan hingga MPR terbentuk."]],
+v:"Varian jalur menyimpang: waktu sidang sudah banyak terpakai, pasal penutup dibahas tergesa.",
+c:"Supomo mengusulkan dua pertiga anggota MPR hadir dan putusan dengan dua pertiga yang hadir (hlm. 358). Ada usul memakai suara terbanyak (hlm. 358-359). Dalam pemungutan, 16 anggota mengangkat tangan untuk usul Supomo, dan Ketua menyatakan kalimat kedua masuk (hlm. 359)."},
+{n:"Ronde 3",ag:"Pemilihan Presiden dan Wakil Presiden",tim:"A",
+sit:"Pasal III Aturan Peralihan disetujui: untuk pertama kali Presiden dan Wakil Presiden dipilih PPKI. Pers menunggu di luar, aturan peralihan masih harus dibahas. Tentukan cara memilih.",
+o:[["kanon","Pilih secara aklamasi karena waktu sangat terbatas: Sukarno calon Presiden, Hatta calon Wakil Presiden.","Keduanya terpilih dalam hitungan menit dan pers segera menyiarkan, tetapi sebagian anggota tak sempat menimbang calon lain."],
+["memaksa","Tolak aklamasi, tuntut pemungutan suara tertulis dengan lebih dari satu calon.","Sidang menghabiskan waktu mencalonkan dan menghitung, aturan peralihan tertunda."],
+["menunda","Tunda pemilihan sampai aturan peralihan selesai dan semua anggota bisa menimbang calon.","Pers dan masyarakat menunggu tanpa kepastian, kepercayaan pada sidang menurun."]],
+v:"Varian jalur menyimpang: perselisihan sebelumnya membuat sebagian anggota ingin calon dipertimbangkan lebih lama, waktu makin sempit.",
+c:"Oto Iskandardinata meminta pemilihan aklamasi dan mengajukan Sukarno, yang dinyatakan terpilih dengan suara bulat sebagai Presiden. Oto lalu mengusulkan Hatta sebagai Wakil Presiden dengan cara sama, dan semua anggota berdiri menyanyikan Indonesia Raya (hlm. 360). Pertimbangan anggota lain: belum diketahui."},
+{n:"Ronde 4",ag:"Aturan Peralihan: Komite Nasional dan aturan tambahan",tim:"B",
+sit:"UUD hampir selesai dan Presiden-Wakil Presiden sudah terpilih. Tinggal aturan peralihan: siapa menjalankan kekuasaan sebelum MPR, DPR, DPA terbentuk. Sebagian anggota akan segera meninggalkan Jakarta.",
+o:[["kanon","Presiden menjalankan kekuasaan dibantu sebuah Komite Nasional sampai MPR, DPR, DPA terbentuk, UUD dilengkapi MPR kelak.","Pemerintahan berjalan sejak hari pertama. Susunan Komite Nasional belum pasti dan dipertanyakan."],
+["memaksa","Susunan Komite Nasional harus ditetapkan hari ini, tolak mengesahkan aturan peralihan sebelum selesai.","Pembahasan berlarut, UUD tak bisa disahkan pada hari yang sama."],
+["menunda","Serahkan semua kekuasaan kepada Presiden tanpa badan pembantu, bicarakan badan pembantu nanti.","Aturan cepat selesai, tetapi tokoh yang ingin badan perwakilan merasa suaranya tak punya tempat."]],
+v:"Varian jalur menyimpang: sidang diwarnai perselisihan, anggota ingin menutup cepat sehingga rincian mudah terlewat.",
+c:"Pasal 4 Aturan Peralihan: sebelum MPR, DPR, DPA dibentuk, kekuasaan dijalankan Presiden dengan bantuan Komite Nasional (hlm. 361). Hatta menyebut sebagian anggota dipilih rakyat dan sebagian ditunjuk Presiden (hlm. 364). Ketua menyatakan UUD dan peraturan peralihan sah, lalu menutup sidang pukul 16.12 (hlm. 367-368)."}];
+var END={kanon:["Jalan yang Tercatat","UUD dan aturan peralihan ditetapkan lewat kompromi, Presiden dan Wakil Presiden dipilih pada hari yang sama. Agenda yang menyimpang ditandai hanya terjadi dalam permainan."],
+buntu:["Sidang Buntu","Tokoh bertahan pada sikap masing-masing, sidang berlarut dan banyak agenda tak selesai. Seluruhnya hanya terjadi dalam permainan."],
+tunggu:["Kemerdekaan yang Menunggu","Keputusan penting digantungkan pada pihak lain dan waktu yang belum pasti. Seluruhnya hanya terjadi dalam permainan."]};
+var app=document.getElementById("app"),r=0,ph="home",perm=[],votes={},res=[],tmr=null,left=180;
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function dev(){return res.some(function(x){return x.l!="kanon"})}
+function show(h){app.innerHTML=h;window.scrollTo(0,0)}
+function home(){ph="home";var g=T.map(function(t,i){return '<div class="g"><b>Kel. '+(i+1)+'</b> '+'<span class="tag">Tim '+t[1]+'</span><br>'+esc(t[0])+'</div>'}).join("");
+show('<h1>Sidang Penentu</h1><p class="mu">Sidang PPKI 18 Agustus 1945 | Sejarah Kelas XI | 16 kelompok x 2 orang</p><div class="card"><b>Cara main (satu layar, dipandu Game Master)</b><ol><li>Tim A aktif ronde 1 dan 3, Tim B aktif ronde 2 dan 4.</li><li>Kelompok pasif melobi lewat kartu lobi tertulis (maks. 140 karakter) ke Game Master.</li><li>Kelompok aktif berdiskusi 3 menit lalu memilih satu opsi. Mayoritas menentukan hasil.</li><li>Setelah 4 ronde, muncul akhir cerita, lalu bedah masalah dengan risalah.</li></ol></div><h3>Pembagian tokoh</h3><div class="grid">'+g+'</div><p><button onclick="start()">Mulai Sidang</button></p>')}
+function start(){r=0;res=[];round()}
+function round(){ph="round";votes={};perm=shuf([0,1,2]);left=180;clearInterval(tmr);var d=R[r];
+var act=[],i;for(i=0;i<16;i++)if(T[i][1]==d.tim)act.push(i);
+var sit=d.sit+(dev()&&d.v?'<br><i>'+d.v+'</i>':'');
+var ops=perm.map(function(p,k){return '<div class="opt"><b>Opsi '+"ABC"[k]+'.</b> '+d.o[p][1]+'</div>'}).join("");
+var gs=act.map(function(i){return '<div class="g"><b>Kel. '+(i+1)+'</b> '+esc(T[i][0])+'<select id="v'+i+'"><option value="">Tidak memutuskan</option><option value="0">Opsi A</option><option value="1">Opsi B</option><option value="2">Opsi C</option></select></div>'}).join("");
+show('<span class="tag">'+d.n+' dari 4 | Tim '+d.tim+' aktif</span> <span class="tag" style="background:'+(dev()?'#a56a00':'#2f6b3f')+'">'+(dev()?'Menyimpang':'Jalur sejarah')+'</span><h2>'+d.ag+'</h2><div class="card">'+sit+'</div>'+ops+'<div class="card"><b>Lobi dan diskusi</b> <span class="mu">(Tim '+(d.tim=="A"?"B":"A")+' kirim kartu lobi ke Game Master, lalu kelompok aktif diskusi)</span><div class="tm" id="tm">3:00</div><button class="alt" onclick="tick()">Mulai / Jeda hitung mundur</button></div><h3>Pilihan kelompok aktif</h3><div class="grid">'+gs+'</div><p><button onclick="count()">Hitung Hasil</button></p>')}
+function tick(){if(tmr){clearInterval(tmr);tmr=null;return}tmr=setInterval(function(){left--;var e=document.getElementById("tm");if(!e){clearInterval(tmr);return}e.textContent=Math.floor(left/60)+":"+("0"+left%60).slice(-2);if(left<=0){clearInterval(tmr);tmr=null}},1000)}
+function count(){clearInterval(tmr);tmr=null;var d=R[r],c=[0,0,0],n=0;
+for(var i=0;i<16;i++){var e=document.getElementById("v"+i);if(e&&e.value!==""){c[+e.value]++;n++}}
+var mx=Math.max.apply(null,c),top=c.filter(function(x){return x==mx}).length,w=-1;
+if(n>0&&top==1)w=c.indexOf(mx);
+var o=w<0?null:d.o[perm[w]],l=o?o[0]:"menunda";
+var ak=o?o[2]:"Suara seri atau tidak ada yang memutuskan, hasil dihitung menunda. Keputusan tertahan dan sidang kehilangan waktu.";
+res.push({l:l,w:w<0?"-":"ABC"[w],ak:ak,c:c});ph="res";
+show('<span class="tag">Hasil '+d.n+'</span><h2>Suara: A '+c[0]+' | B '+c[1]+' | C '+c[2]+'</h2><div class="card"><b>Akibat dalam simulasi:</b><br>'+ak+'</div><p class="mu">Akibat ini hanya rancangan simulasi, bukan peristiwa nyata.</p><p><button onclick="nx()">'+(r<3?'Ronde berikutnya':'Lihat akhir cerita')+'</button></p>')}
+function nx(){if(r<3){r++;round()}else ending()}
+function ending(){var k=res.filter(function(x){return x.l=="kanon"}).length,m=res.filter(function(x){return x.l=="memaksa"}).length,u=res.filter(function(x){return x.l=="menunda"}).length;
+var e=k>=3?"kanon":(m>u?"buntu":"tunggu");
+show('<h1>'+END[e][0]+'</h1><div class="card">'+END[e][1]+'</div><div class="card sc"><b>Jejak Keputusan</b><table width="100%" cellpadding="6"><tr><td>Ronde</td><td>Opsi menang</td><td>Hasil</td></tr>'+res.map(function(x,i){return '<tr><td>'+(i+1)+'</td><td>'+x.w+'</td><td>'+x.l+'</td></tr>'}).join("")+'</table></div><p><button onclick="bedah()">Bedah Masalah</button></p>')}
+function bedah(){show('<h1>Bedah Masalah</h1><p class="mu">Keluar dari peran tokoh. Bandingkan jejak kelompok dengan yang tercatat di risalah.</p>'+R.map(function(d,i){return '<div class="card"><b>'+d.n+': '+d.ag+'</b><p>Hasil simulasi: <b>'+res[i].l+'</b>. '+res[i].ak+'</p><p class="ok"><b>Yang tercatat:</b> '+d.c+'</p></div>'}).join("")+'<div class="card"><b>Formulir Bedah Masalah (per kelompok)</b><ol><li>Jelaskan dilema tokohmu pada salah satu ronde aktif dengan bahasa sendiri.</li><li>Bandingkan pertimbangan tokohmu dengan satu tokoh lain lewat kartu lobi.</li><li>Pilih satu akibat di layar: mana yang tercatat (sebut rujukan), mana yang hanya terjadi dalam permainan?</li><li>Apa akibat bila memilih opsi lain, dan seberapa pasti?</li></ol></div><div class="card"><b>Refleksi Individu</b><ol><li>Mengapa keputusan anggota PPKI di risalah sama atau beda dengan keputusan kelompokmu? (3-4 kalimat, satu rujukan)</li><li>Keputusan mana yang kamu ubah setelah membaca risalah, apa pemicunya, dan apa yang belum kamu ketahui?</li></ol></div><p class="mu">Sumber: Risalah rapat PPKI 18 Agustus 1945 (Setneg) dan Buku Teks Sejarah Kelas XI (Safitry dkk., 2024).</p><p><button onclick="home()">Main lagi</button></p>')}
+home();
+</script></body></html>
